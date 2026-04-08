@@ -1,0 +1,24 @@
+providers = ["php"]
+
+[variables]
+NIXPACKS_PHP_VERSION = "8.3"
+NIXPACKS_NODE_VERSION = "20"
+NIXPACKS_PHP_EXTENSIONS = "pdo_mysql,mbstring,openssl,fileinfo,tokenizer,xml,ctype,json,bcmath"
+
+[phases.install]
+cmds = [
+  "composer install --no-dev --optimize-autoloader",
+  "npm install"
+]
+
+[phases.build]
+cmds = [
+  "npm run build",
+  "php artisan config:clear",
+  "php artisan route:clear",
+  "php artisan view:clear",
+  "php artisan storage:link"
+]
+
+[start]
+cmd = "bash start.sh"

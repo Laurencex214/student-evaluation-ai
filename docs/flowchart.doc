@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>System Flowchart – AI-Driven Student Evaluation System</title>
+<style>
+  body { font-family: "Times New Roman", serif; background:#fff; color:#000; margin:0; padding:0; }
+  .page { width:780px; margin:0 auto; padding:40px 60px; border:1px solid #ccc; margin-bottom:30px; page-break-after:always; }
+  h2 { text-align:center; font-size:15px; font-weight:bold; margin:18px 0 4px; }
+  .caption { text-align:center; font-size:13px; margin-bottom:8px; }
+  p.desc { text-align:justify; font-size:13px; line-height:1.7; margin:10px 0; }
+  svg text { font-family:"Times New Roman",serif; }
+  .footer { font-size:11px; color:#555; border-top:1px solid #aaa; padding-top:4px; margin-top:30px; }
+  .legend-table { border-collapse:collapse; width:100%; margin:10px 0; }
+  .legend-table td, .legend-table th { border:1px solid #000; padding:6px 10px; font-size:13px; text-align:left; vertical-align:middle; }
+  .legend-table th { background:#f0f0f0; text-align:center; font-weight:bold; }
+  @media print { .page { border:none; } }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PAGE 1 – LEGEND / SYMBOL DEFINITIONS
+     ══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <h2>Figure Legend – Flowchart Symbol Definitions</h2>
+  <table class="legend-table">
+    <tr><th>Symbol</th><th>Name</th><th>Description</th></tr>
+    <tr>
+      <td><svg width="100" height="36"><rect x="10" y="6" width="80" height="24" rx="2" fill="none" stroke="#000" stroke-width="1.5"/><text x="50" y="22" text-anchor="middle" font-size="11">Process</text></svg></td>
+      <td>Process</td>
+      <td>Shows a process or action step performed by the system.</td>
+    </tr>
+    <tr>
+      <td><svg width="100" height="36"><line x1="10" y1="18" x2="90" y2="18" stroke="#000" stroke-width="1.5" marker-end="url(#arr)"/><defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#000"/></marker></defs></svg></td>
+      <td>Flow Line</td>
+      <td>Shows the direction of the process flow in the system.</td>
+    </tr>
+    <tr>
+      <td><svg width="100" height="36"><rect x="10" y="6" width="80" height="24" rx="12" fill="none" stroke="#000" stroke-width="1.5"/><text x="50" y="22" text-anchor="middle" font-size="11">Terminal</text></svg></td>
+      <td>Terminal</td>
+      <td>A terminal shows where a process starts or ends.</td>
+    </tr>
+    <tr>
+      <td><svg width="100" height="44"><polygon points="50,4 92,22 50,40 8,22" fill="none" stroke="#000" stroke-width="1.5"/><text x="50" y="26" text-anchor="middle" font-size="10">Decision</text></svg></td>
+      <td>Decision</td>
+      <td>Indicates a question or branch (Yes/No) in the process flow.</td>
+    </tr>
+    <tr>
+      <td><svg width="100" height="36"><rect x="10" y="4" width="80" height="28" fill="none" stroke="#000" stroke-width="1.5"/><ellipse cx="50" cy="32" rx="40" ry="7" fill="none" stroke="#000" stroke-width="1.5"/></svg></td>
+      <td>Database</td>
+      <td>Represents data/information stored in the storage device.</td>
+    </tr>
+    <tr>
+      <td><svg width="100" height="36"><polygon points="10,18 20,6 90,6 80,30 10,30" fill="none" stroke="#000" stroke-width="1.5"/><text x="50" y="22" text-anchor="middle" font-size="10">Input/Output</text></svg></td>
+      <td>Data Input/Output</td>
+      <td>Indicates that information is coming into or leaving the process.</td>
+    </tr>
+    <tr>
+      <td><svg width="100" height="36"><circle cx="50" cy="18" r="14" fill="none" stroke="#000" stroke-width="1.5"/><text x="50" y="22" text-anchor="middle" font-size="10">A</text></svg></td>
+      <td>On-Page Connector</td>
+      <td>Connects separate processes within a single page.</td>
+    </tr>
+  </table>
+  <div class="footer">Bachelor of Science in Information Technology</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PAGE 2 – LOGIN FLOWCHART (all 3 portals)
+     ══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <h2>Figure 1: Login Form – Role Selection & Authentication</h2>
+  <div style="display:flex;justify-content:center;">
+  <svg width="500" height="660" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#000"/></marker>
+    </defs>
+
+    <!-- Start -->
+    <rect x="180" y="10" width="140" height="28" rx="14" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="250" y="28" text-anchor="middle" font-size="12">START</text>
+
+    <!-- Arrow -->
+    <line x1="250" y1="38" x2="250" y2="58" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+
+    <!-- Landing Page -->
+    <rect x="175" y="58" width="150" height="28" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="250" y="76" text-anchor="middle" font-size="11">Landing Page (Portal Select)</text>
+
+    <line x1="250" y1="86" x2="250" y2="106" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+
+    <!-- Decision: Role -->
+    <polygon points="250,106 340,132 250,158 160,132" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="250" y="136" text-anchor="middle" font-size="11">Select Role?</text>
+
+    <!-- Admin branch -->
+    <line x1="160" y1="132" x2="60" y2="132" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+    <text x="110" y="126" text-anchor="middle" font-size="10">Admin</text>
+    <rect x="10" y="145" width="100" height="28" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="60" y="163" text-anchor="middle" font-size="10">Admin Login Page</text>
+    <line x1="60" y1="132" x2="60" y2="145" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+
+    <!-- Teacher branch -->
+    <text x="250" y="172" text-anchor="middle" font-size="10">Teacher</text>
+    <line x1="250" y1="158" x2="250" y2="178" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+    <rect x="175" y="178" width="150" height="28" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="250" y="196" text-anchor="middle" font-size="10">Teacher Login Page</text>
+
+    <!-- Student branch -->
+    <line x1="340" y1="132" x2="430" y2="132" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+    <text x="385" y="126" text-anchor="middle" font-size="10">Student</text>
+    <rect x="380" y="145" width="110" height="28" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="435" y="163" text-anchor="middle" font-size="10">Student Login Page</text>
+    <line x1="435" y1="132" x2="435" y2="145" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+
+    <!-- Enter credentials -->
+    <line x1="60" y1="173" x2="60" y2="250" stroke="#000" stroke-width="1.5"/>
+    <line x1="60" y1="250" x2="175" y2="250" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+    <line x1="250" y1="206" x2="250" y2="250" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+    <line x1="435" y1="173" x2="435" y2="250" stroke="#000" stroke-width="1.5"/>
+    <line x1="435" y1="250" x2="325" y2="250" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+
+    <rect x="175" y="250" width="150" height="34" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="250" y="264" text-anchor="middle" font-size="11">Enter Username</text>
+    <text x="250" y="278" text-anchor="middle" font-size="11">&amp; Password / QR</text>
+
+    <line x1="250" y1="284" x2="250" y2="310" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+
+    <!-- Decision: Credentials correct? -->
+    <polygon points="250,310 355,336 250,362 145,336" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="250" y="340" text-anchor="middle" font-size="11">Credentials Valid?</text>
+
+    <!-- No branch – Incorrect -->
+    <line x1="145" y1="336" x2="60" y2="336" stroke="#000" stroke-width="1.5"/>
+    <text x="103" y="330" text-anchor="middle" font-size="10">No</text>
+    <rect x="10" y="348" width="100" height="28" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="60" y="366" text-anchor="middle" font-size="10">Incorrect Input</text>
+    <line x1="60" y1="348" x2="60" y2="336" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+    <!-- Loop back up -->
+    <line x1="60" y1="376" x2="60" y2="267" stroke="#000" stroke-width="1.5"/>
+    <line x1="60" y1="267" x2="175" y2="267" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+
+    <!-- Yes branch -->
+    <text x="260" y="376" text-anchor="middle" font-size="10">Yes</text>
+    <line x1="250" y1="362" x2="250" y2="390" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+
+    <!-- Database -->
+    <rect x="185" y="390" width="130" height="22" fill="none" stroke="#000" stroke-width="1.5"/>
+    <ellipse cx="250" cy="412" rx="65" ry="8" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="250" y="406" text-anchor="middle" font-size="11">DATABASE</text>
+
+    <line x1="250" y1="420" x2="250" y2="448" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+
+    <!-- Authenticated -->
+    <rect x="170" y="448" width="160" height="28" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="250" y="466" text-anchor="middle" font-size="11">User Authenticated</text>
+
+    <line x1="250" y1="476" x2="250" y2="502" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+
+    <!-- Redirect to Dashboard -->
+    <rect x="170" y="502" width="160" height="28" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="250" y="520" text-anchor="middle" font-size="11">Redirect to Dashboard</text>
+
+    <line x1="250" y1="530" x2="250" y2="556" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+
+    <!-- Connector B -->
+    <circle cx="250" cy="570" r="14" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="250" y="575" text-anchor="middle" font-size="13" font-weight="bold">B</text>
+  </svg>
+  </div>
+  <p class="desc">
+    The login flowchart illustrates the authentication process for the AI-Driven Student Evaluation System. The system supports three user roles: Admin, Teacher, and Student. Each role has a dedicated login portal. Users enter their credentials (username and password) or scan a QR code. If credentials are invalid, the system displays an error and prompts re-entry. Upon successful validation against the database, the user is authenticated and redirected to their respective dashboard.
+  </p>
+  <div class="footer">Bachelor of Science in Information Technology</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PAGE 3 – ADMIN MODULES FLOWCHART
+     ══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <h2>Figure 2: Admin Portal – Main Page and Modules</h2>
+  <div style="display:flex;justify-content:center;">
+  <svg width="420" height="760" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#000"/></marker>
+    </defs>
+
+    <!-- Connector B -->
+    <circle cx="210" cy="20" r="14" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="25" text-anchor="middle" font-size="13" font-weight="bold">B</text>
+    <line x1="210" y1="34" x2="210" y2="54" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+
+    <!-- Macro: decision block helper – repeated for each module -->
+    <!-- Dashboard? -->
+    <polygon points="210,54 320,80 210,106 100,80" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="84" text-anchor="middle" font-size="11">Dashboard?</text>
+    <text x="260" y="96" font-size="10">Yes</text>
+    <line x1="320" y1="80" x2="380" y2="80" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+    <circle cx="395" cy="80" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="84" text-anchor="middle" font-size="10">C</text>
+
+    <!-- No arrow down -->
+    <text x="220" y="122" font-size="10">No</text>
+    <line x1="210" y1="106" x2="210" y2="128" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+
+    <!-- Add Students? -->
+    <polygon points="210,128 320,154 210,180 100,154" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="158" text-anchor="middle" font-size="11">Add Students?</text>
+    <text x="260" y="170" font-size="10">Yes</text>
+    <line x1="320" y1="154" x2="380" y2="154" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+    <circle cx="395" cy="154" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="158" text-anchor="middle" font-size="10">D</text>
+
+    <text x="220" y="196" font-size="10">No</text>
+    <line x1="210" y1="180" x2="210" y2="202" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+
+    <!-- Records? -->
+    <polygon points="210,202 320,228 210,254 100,228" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="232" text-anchor="middle" font-size="11">Records?</text>
+    <text x="260" y="244" font-size="10">Yes</text>
+    <line x1="320" y1="228" x2="380" y2="228" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+    <circle cx="395" cy="228" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="232" text-anchor="middle" font-size="10">E</text>
+
+    <text x="220" y="270" font-size="10">No</text>
+    <line x1="210" y1="254" x2="210" y2="276" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+
+    <!-- Manage Teachers? -->
+    <polygon points="210,276 320,302 210,328 100,302" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="306" text-anchor="middle" font-size="11">Manage Teachers?</text>
+    <text x="260" y="318" font-size="10">Yes</text>
+    <line x1="320" y1="302" x2="380" y2="302" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+    <circle cx="395" cy="302" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="306" text-anchor="middle" font-size="10">F</text>
+
+    <text x="220" y="344" font-size="10">No</text>
+    <line x1="210" y1="328" x2="210" y2="350" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+
+    <!-- Assign Section? -->
+    <polygon points="210,350 320,376 210,402 100,376" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="380" text-anchor="middle" font-size="11">Assign Section?</text>
+    <text x="260" y="392" font-size="10">Yes</text>
+    <line x1="320" y1="376" x2="380" y2="376" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+    <circle cx="395" cy="376" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="380" text-anchor="middle" font-size="10">G</text>
+
+    <text x="220" y="418" font-size="10">No</text>
+    <line x1="210" y1="402" x2="210" y2="424" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+
+    <!-- Activity Logs? -->
+    <polygon points="210,424 320,450 210,476 100,450" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="454" text-anchor="middle" font-size="11">Activity Logs?</text>
+    <text x="260" y="466" font-size="10">Yes</text>
+    <line x1="320" y1="450" x2="380" y2="450" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+    <circle cx="395" cy="450" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="454" text-anchor="middle" font-size="10">H</text>
+
+    <text x="220" y="492" font-size="10">No</text>
+    <line x1="210" y1="476" x2="210" y2="498" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+
+    <!-- Analytics? -->
+    <polygon points="210,498 320,524 210,550 100,524" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="528" text-anchor="middle" font-size="11">Analytics?</text>
+    <text x="260" y="540" font-size="10">Yes</text>
+    <line x1="320" y1="524" x2="380" y2="524" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+    <circle cx="395" cy="524" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="528" text-anchor="middle" font-size="10">I</text>
+
+    <text x="220" y="566" font-size="10">No</text>
+    <line x1="210" y1="550" x2="210" y2="572" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+
+    <!-- Settings? -->
+    <polygon points="210,572 320,598 210,624 100,598" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="602" text-anchor="middle" font-size="11">Settings?</text>
+    <text x="260" y="614" font-size="10">Yes</text>
+    <line x1="320" y1="598" x2="380" y2="598" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+    <circle cx="395" cy="598" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="602" text-anchor="middle" font-size="10">J</text>
+
+    <text x="220" y="640" font-size="10">No</text>
+    <line x1="210" y1="624" x2="210" y2="646" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+
+    <!-- Logout? -->
+    <polygon points="210,646 310,668 210,690 110,668" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="672" text-anchor="middle" font-size="11">Logout?</text>
+
+    <!-- No → loop back -->
+    <text x="90" y="662" font-size="10">No</text>
+    <line x1="110" y1="668" x2="40" y2="668" stroke="#000" stroke-width="1.5"/>
+    <line x1="40" y1="668" x2="40" y2="80" stroke="#000" stroke-width="1.5"/>
+    <line x1="40" y1="80" x2="100" y2="80" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+
+    <!-- Yes → End -->
+    <text x="215" y="706" font-size="10">Yes</text>
+    <line x1="210" y1="690" x2="210" y2="716" stroke="#000" stroke-width="1.5" marker-end="url(#b)"/>
+    <rect x="170" y="716" width="80" height="28" rx="14" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="734" text-anchor="middle" font-size="12">End</text>
+  </svg>
+  </div>
+  <p class="desc">
+    When the Admin is authenticated and directed from point 'B', the system presents the Admin Dashboard with access to all management modules: Dashboard, Add Students, Records, Manage Teachers, Assign Section, Activity Logs, Analytics, and Settings. A decision branch determines which module the Admin accesses. If Logout is selected, the session ends. Otherwise, the Admin is looped back to continue navigating.
+  </p>
+  <div class="footer">Bachelor of Science in Information Technology</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PAGE 4 – TEACHER MODULES FLOWCHART
+     ══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <h2>Figure 3: Teacher Portal – Main Page and Modules</h2>
+  <div style="display:flex;justify-content:center;">
+  <svg width="420" height="600" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="c" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#000"/></marker>
+    </defs>
+
+    <circle cx="210" cy="20" r="14" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="25" text-anchor="middle" font-size="13" font-weight="bold">B</text>
+    <line x1="210" y1="34" x2="210" y2="54" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+
+    <!-- Dashboard? -->
+    <polygon points="210,54 320,80 210,106 100,80" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="84" text-anchor="middle" font-size="11">Dashboard?</text>
+    <text x="260" y="96" font-size="10">Yes</text>
+    <line x1="320" y1="80" x2="380" y2="80" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+    <circle cx="395" cy="80" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="84" text-anchor="middle" font-size="10">C</text>
+    <text x="220" y="122" font-size="10">No</text>
+    <line x1="210" y1="106" x2="210" y2="128" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+
+    <!-- Add Students? -->
+    <polygon points="210,128 320,154 210,180 100,154" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="158" text-anchor="middle" font-size="11">Add Students?</text>
+    <text x="260" y="170" font-size="10">Yes</text>
+    <line x1="320" y1="154" x2="380" y2="154" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+    <circle cx="395" cy="154" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="158" text-anchor="middle" font-size="10">D</text>
+    <text x="220" y="196" font-size="10">No</text>
+    <line x1="210" y1="180" x2="210" y2="202" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+
+    <!-- Records? -->
+    <polygon points="210,202 320,228 210,254 100,228" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="232" text-anchor="middle" font-size="11">Records (Grades)?</text>
+    <text x="260" y="244" font-size="10">Yes</text>
+    <line x1="320" y1="228" x2="380" y2="228" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+    <circle cx="395" cy="228" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="232" text-anchor="middle" font-size="10">E</text>
+    <text x="220" y="270" font-size="10">No</text>
+    <line x1="210" y1="254" x2="210" y2="276" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+
+    <!-- Attendance? -->
+    <polygon points="210,276 320,302 210,328 100,302" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="306" text-anchor="middle" font-size="11">Attendance?</text>
+    <text x="260" y="318" font-size="10">Yes</text>
+    <line x1="320" y1="302" x2="380" y2="302" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+    <circle cx="395" cy="302" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="306" text-anchor="middle" font-size="10">F</text>
+    <text x="220" y="344" font-size="10">No</text>
+    <line x1="210" y1="328" x2="210" y2="350" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+
+    <!-- Settings? -->
+    <polygon points="210,350 320,376 210,402 100,376" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="380" text-anchor="middle" font-size="11">Settings?</text>
+    <text x="260" y="392" font-size="10">Yes</text>
+    <line x1="320" y1="376" x2="380" y2="376" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+    <circle cx="395" cy="376" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="380" text-anchor="middle" font-size="10">G</text>
+    <text x="220" y="418" font-size="10">No</text>
+    <line x1="210" y1="402" x2="210" y2="424" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+
+    <!-- AI Chatbot? -->
+    <polygon points="210,424 320,450 210,476 100,450" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="454" text-anchor="middle" font-size="11">AI Chatbot?</text>
+    <text x="260" y="466" font-size="10">Yes</text>
+    <line x1="320" y1="450" x2="380" y2="450" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+    <circle cx="395" cy="450" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="454" text-anchor="middle" font-size="10">H</text>
+    <text x="220" y="492" font-size="10">No</text>
+    <line x1="210" y1="476" x2="210" y2="498" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+
+    <!-- Logout? -->
+    <polygon points="210,498 310,520 210,542 110,520" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="524" text-anchor="middle" font-size="11">Logout?</text>
+    <text x="90" y="514" font-size="10">No</text>
+    <line x1="110" y1="520" x2="40" y2="520" stroke="#000" stroke-width="1.5"/>
+    <line x1="40" y1="520" x2="40" y2="80" stroke="#000" stroke-width="1.5"/>
+    <line x1="40" y1="80" x2="100" y2="80" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+    <text x="215" y="558" font-size="10">Yes</text>
+    <line x1="210" y1="542" x2="210" y2="568" stroke="#000" stroke-width="1.5" marker-end="url(#c)"/>
+    <rect x="170" y="568" width="80" height="28" rx="14" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="586" text-anchor="middle" font-size="12">End</text>
+  </svg>
+  </div>
+  <p class="desc">
+    The Teacher portal provides access to five core modules: Dashboard, Add Students, Records (Grade Entry), Attendance Management, Settings, and the AI Chatbot. The system guides the teacher through decision branches until the desired module is selected. If Logout is chosen, the session ends. Otherwise, the teacher returns to the navigation loop.
+  </p>
+  <div class="footer">Bachelor of Science in Information Technology</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PAGE 5 – STUDENT PORTAL FLOWCHART
+     ══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <h2>Figure 4: Student Portal – Dashboard and Features</h2>
+  <div style="display:flex;justify-content:center;">
+  <svg width="420" height="520" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="d" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#000"/></marker>
+    </defs>
+
+    <circle cx="210" cy="20" r="14" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="25" text-anchor="middle" font-size="13" font-weight="bold">B</text>
+    <line x1="210" y1="34" x2="210" y2="54" stroke="#000" stroke-width="1.5" marker-end="url(#d)"/>
+
+    <!-- Dashboard -->
+    <rect x="155" y="54" width="110" height="28" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="72" text-anchor="middle" font-size="11">Student Dashboard</text>
+    <line x1="210" y1="82" x2="210" y2="106" stroke="#000" stroke-width="1.5" marker-end="url(#d)"/>
+
+    <!-- View Grades? -->
+    <polygon points="210,106 320,132 210,158 100,132" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="136" text-anchor="middle" font-size="11">View Grades?</text>
+    <text x="260" y="148" font-size="10">Yes</text>
+    <line x1="320" y1="132" x2="380" y2="132" stroke="#000" stroke-width="1.5" marker-end="url(#d)"/>
+    <circle cx="395" cy="132" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="136" text-anchor="middle" font-size="10">C</text>
+    <text x="220" y="174" font-size="10">No</text>
+    <line x1="210" y1="158" x2="210" y2="180" stroke="#000" stroke-width="1.5" marker-end="url(#d)"/>
+
+    <!-- View Attendance? -->
+    <polygon points="210,180 320,206 210,232 100,206" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="210" text-anchor="middle" font-size="11">View Attendance?</text>
+    <text x="260" y="222" font-size="10">Yes</text>
+    <line x1="320" y1="206" x2="380" y2="206" stroke="#000" stroke-width="1.5" marker-end="url(#d)"/>
+    <circle cx="395" cy="206" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="210" text-anchor="middle" font-size="10">D</text>
+    <text x="220" y="248" font-size="10">No</text>
+    <line x1="210" y1="232" x2="210" y2="254" stroke="#000" stroke-width="1.5" marker-end="url(#d)"/>
+
+    <!-- View Analytics? -->
+    <polygon points="210,254 320,280 210,306 100,280" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="284" text-anchor="middle" font-size="11">View Analytics?</text>
+    <text x="260" y="296" font-size="10">Yes</text>
+    <line x1="320" y1="280" x2="380" y2="280" stroke="#000" stroke-width="1.5" marker-end="url(#d)"/>
+    <circle cx="395" cy="280" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="284" text-anchor="middle" font-size="10">E</text>
+    <text x="220" y="322" font-size="10">No</text>
+    <line x1="210" y1="306" x2="210" y2="328" stroke="#000" stroke-width="1.5" marker-end="url(#d)"/>
+
+    <!-- AI Chatbot? -->
+    <polygon points="210,328 320,354 210,380 100,354" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="358" text-anchor="middle" font-size="11">AI Chatbot?</text>
+    <text x="260" y="370" font-size="10">Yes</text>
+    <line x1="320" y1="354" x2="380" y2="354" stroke="#000" stroke-width="1.5" marker-end="url(#d)"/>
+    <circle cx="395" cy="354" r="11" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="395" y="358" text-anchor="middle" font-size="10">F</text>
+    <text x="220" y="396" font-size="10">No</text>
+    <line x1="210" y1="380" x2="210" y2="402" stroke="#000" stroke-width="1.5" marker-end="url(#d)"/>
+
+    <!-- Logout? -->
+    <polygon points="210,402 310,424 210,446 110,424" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="428" text-anchor="middle" font-size="11">Logout?</text>
+    <text x="90" y="418" font-size="10">No</text>
+    <line x1="110" y1="424" x2="40" y2="424" stroke="#000" stroke-width="1.5"/>
+    <line x1="40" y1="424" x2="40" y2="132" stroke="#000" stroke-width="1.5"/>
+    <line x1="40" y1="132" x2="100" y2="132" stroke="#000" stroke-width="1.5" marker-end="url(#d)"/>
+    <text x="215" y="462" font-size="10">Yes</text>
+    <line x1="210" y1="446" x2="210" y2="472" stroke="#000" stroke-width="1.5" marker-end="url(#d)"/>
+    <rect x="170" y="472" width="80" height="28" rx="14" fill="none" stroke="#000" stroke-width="1.5"/>
+    <text x="210" y="490" text-anchor="middle" font-size="12">End</text>
+  </svg>
+  </div>
+  <p class="desc">
+    The Student Portal provides a personalized view of the student's academic data. Upon authentication, the student accesses the dashboard where they can view their Grades per subject, Attendance records, Performance Analytics, and consult the AI Chatbot for academic guidance. If Logout is selected, the session ends. If no option is chosen, the student is looped back to the navigation.
+  </p>
+  <div class="footer">Bachelor of Science in Information Technology</div>
+</div>
+
+</body>
+</html>
