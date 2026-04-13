@@ -309,6 +309,5 @@ function refreshTable(search = '') {
 function searchTable(val) { refreshTable(val); }
 
 function showReportForLRN(lrn) {
-    const s = students.find(x => x.lrn === lrn);
-    if (s) showReport(s);
+    // Academic Report functionality disabled as requested.
 }

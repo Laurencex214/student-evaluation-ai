@@ -328,7 +328,7 @@
     <script src="{{ asset('js/admin/records.js') }}"></script>
     <script src="{{ asset('js/admin/manageTeachers.js') }}"></script>
     <script src="{{ asset('js/admin/subjects.js') }}"></script>
-    <script src="{{ asset('js/admin/history.js') }}"></script>
+
     <script src="{{ asset('js/admin/activityLogs.js') }}"></script>
     <script src="{{ asset('js/admin/settings.js') }}"></script>
     <script src="{{ asset('js/admin/assignSection.js') }}"></script>
@@ -390,7 +390,7 @@
                 'activity-logs':  'logs',
                 'analytics':      'analytics',
                 'settings':       'settings',
-                'history':        'history',
+
             };
             const lastSegment = window.location.pathname.split('/').filter(Boolean).pop() || 'dashboard';
             const currentView = urlToView[lastSegment] || 'dashboard';

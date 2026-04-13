@@ -55,11 +55,7 @@
             <span class="sidebar-text">Advisory Class</span>
         </button>
 
-        <button onclick="navigate('history')" id="nav-history"
-            class="sidebar-item w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-sm text-white/70 hover:text-white hover:bg-white/10 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group">
-            <i class="fas fa-history w-5 text-center text-lg opacity-80 group-hover:text-accent transition-colors"></i>
-            <span class="sidebar-text">Student History</span>
-        </button>
+
 
         {{-- Admin-only items --}}
         <button onclick="navigate('manage-teachers')" id="nav-manage-teachers"

@@ -32,7 +32,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/activity-logs',    [AdminController::class, 'activityLogs'])->name('activity-logs');
     Route::get('/analytics',        [AdminController::class, 'analytics'])->name('analytics');
     Route::get('/settings',         [AdminController::class, 'settings'])->name('settings');
-    Route::get('/history',          [AdminController::class, 'history'])->name('history');
+
 });
 
 // Teacher Routes
@@ -41,7 +41,7 @@ Route::group(['prefix' => 'teacher', 'as' => 'teacher.'], function () {
     Route::get('/add-students', [TeacherController::class, 'addStudents'])->name('add-students');
     Route::get('/records',      [TeacherController::class, 'records'])->name('records');
     Route::get('/settings',     [TeacherController::class, 'settings'])->name('settings');
-    Route::get('/history',      [TeacherController::class, 'history'])->name('history');
+
 });
 
 // Student Routes
@@ -91,5 +91,3 @@ Route::get('/api/attendance/section/{section}', [AttendanceController::class, 'g
 Route::post('/api/attendance/save-bulk',      [AttendanceController::class, 'saveBulk'])->withoutMiddleware($nocsrf);
 Route::post('/api/attendance/save-section-bulk', [AttendanceController::class, 'saveSectionBulk'])->withoutMiddleware($nocsrf);
 
-// AI Chatbot API
-Route::post('/api/chat', [ChatController::class, 'chat'])->withoutMiddleware($nocsrf);

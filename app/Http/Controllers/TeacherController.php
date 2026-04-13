@@ -41,13 +41,7 @@ class TeacherController extends Controller
         return view('teacher.settings');
     }
 
-    /**
-     * Student History page.
-     */
-    public function history()
-    {
-        return view('teacher.dashboard');
-    }
+
 
     // ─── API Methods ────────────────────────────────────────────────────────────
 

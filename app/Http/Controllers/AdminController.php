@@ -70,11 +70,5 @@ class AdminController extends Controller
         return view('admin.settings');
     }
 
-    /**
-     * Student History page.
-     */
-    public function history()
-    {
-        return view('admin.dashboard');
-    }
+
 }

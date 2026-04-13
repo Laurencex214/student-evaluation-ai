@@ -479,7 +479,7 @@
     <script src="{{ asset('js/admin/manageTeachers.js') }}"></script>
     <script src="{{ asset('js/admin/subjects.js') }}"></script>
     <script src="{{ asset('js/admin/assignSection.js') }}"></script>
-    <script src="{{ asset('js/admin/history.js') }}"></script>
+
     <script src="{{ asset('js/admin/activityLogs.js') }}"></script>
     <script src="{{ asset('js/admin/settings.js') }}"></script>
 
