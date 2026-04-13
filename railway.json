@@ -5,6 +5,7 @@
     },
     "deploy": {
         "startCommand": "bash start.sh",
-        "healthcheckPath": "/login/admin"
+        "healthcheckPath": "/up",
+        "healthcheckTimeout": 300
     }
 }
