@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement('ALTER TABLE teachers MODIFY COLUMN profile_picture LONGTEXT NULL');
+        if (DB::getDriverName() === 'mysql') {
+            DB::statement('ALTER TABLE teachers MODIFY COLUMN profile_picture LONGTEXT NULL');
+        }
     }
 
     public function down(): void
     {
-        DB::statement('ALTER TABLE teachers MODIFY COLUMN profile_picture TEXT NULL');
+        if (DB::getDriverName() === 'mysql') {
+            DB::statement('ALTER TABLE teachers MODIFY COLUMN profile_picture TEXT NULL');
+        }
     }
 };

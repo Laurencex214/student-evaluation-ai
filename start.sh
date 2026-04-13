@@ -16,9 +16,17 @@ trap 'error_handler $LINENO' ERR
 log "=== Environment Setup ==="
 if [ -n "$DATABASE_URL" ]; then
     export DB_CONNECTION=${DB_CONNECTION:-mysql}
-    log "Database URL detected, using $DB_CONNECTION connection."
+    log "DATABASE_URL detected, using $DB_CONNECTION connection."
+elif [ -n "$MYSQL_URL" ]; then
+    export DB_CONNECTION=${DB_CONNECTION:-mysql}
+    export DATABASE_URL="$MYSQL_URL"
+    log "MYSQL_URL detected, standardizing to DATABASE_URL and using $DB_CONNECTION connection."
+elif [ -n "$DB_URL" ]; then
+    export DB_CONNECTION=${DB_CONNECTION:-mysql}
+    export DATABASE_URL="$DB_URL"
+    log "DB_URL detected, standardizing to DATABASE_URL and using $DB_CONNECTION connection."
 else
-    log "WARNING: DATABASE_URL not detected. Defaulting to sqlite if not set elsewhere."
+    log "WARNING: No database URL (DATABASE_URL, MYSQL_URL, or DB_URL) detected. Defaulting to sqlite if not set elsewhere."
 fi
 
 # Ensure basic directories exist
