@@ -29,11 +29,17 @@ mkdir -p bootstrap/cache
 chmod -R 775 storage bootstrap/cache
 
 log "=== Generating app key if missing ==="
+# Create .env if missing so key:generate doesn't crash
+if [ ! -f .env ]; then
+    log "Creating missing .env file..."
+    touch .env
+fi
+
 if [ -z "$APP_KEY" ] || [ "$APP_KEY" = "base64:..." ]; then
     php artisan key:generate --no-interaction --force
     log "Generated new APP_KEY."
 else
-    log "APP_KEY is already set."
+    log "APP_KEY is already set in environment."
 fi
 
 log "=== Optimizing Application ==="
