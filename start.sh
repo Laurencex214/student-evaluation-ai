@@ -37,10 +37,10 @@ mkdir -p bootstrap/cache
 chmod -R 775 storage bootstrap/cache
 
 log "=== Generating app key if missing ==="
-# Create .env if missing so key:generate doesn't crash
+# Create .env with placeholder if missing so key:generate doesn't complain
 if [ ! -f .env ]; then
-    log "Creating missing .env file..."
-    touch .env
+    log "Creating missing .env file with APP_KEY placeholder..."
+    echo "APP_KEY=" > .env
 fi
 
 if [ -z "$APP_KEY" ] || [ "$APP_KEY" = "base64:..." ]; then
@@ -49,6 +49,10 @@ if [ -z "$APP_KEY" ] || [ "$APP_KEY" = "base64:..." ]; then
 else
     log "APP_KEY is already set in environment."
 fi
+
+# Enable DEBUG mode for this troubleshooting phase
+export APP_DEBUG=${APP_DEBUG:-true}
+log "APP_DEBUG is set to $APP_DEBUG"
 
 log "=== Optimizing Application ==="
 # We use || true here so that even if caching fails, the server still attempts to start
