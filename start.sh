@@ -1,33 +1,55 @@
 #!/bin/bash
 set -e
 
-echo "=== Environment Setup ==="
+# Diagnostic logging function
+log() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1"
+}
+
+# Error handler
+error_handler() {
+    log "ERROR: An error occurred on line $1. Check deploy logs for details."
+    exit 1
+}
+trap 'error_handler $LINENO' ERR
+
+log "=== Environment Setup ==="
 if [ -n "$DATABASE_URL" ]; then
-    # Laravel handles DATABASE_URL natively, we just ensure the connection type is mysql
     export DB_CONNECTION=${DB_CONNECTION:-mysql}
-    echo "  Database URL detected, using $DB_CONNECTION connection."
+    log "Database URL detected, using $DB_CONNECTION connection."
+else
+    log "WARNING: DATABASE_URL not detected. Defaulting to sqlite if not set elsewhere."
 fi
 
 # Ensure basic directories exist
+log "Ensuring directory permissions..."
 mkdir -p storage/framework/{sessions,views,cache}
+mkdir -p storage/logs
+mkdir -p bootstrap/cache
 chmod -R 775 storage bootstrap/cache
 
-echo "=== Generating app key if missing ==="
-if [ -z "$APP_KEY" ]; then
+log "=== Generating app key if missing ==="
+if [ -z "$APP_KEY" ] || [ "$APP_KEY" = "base64:..." ]; then
     php artisan key:generate --no-interaction --force
+    log "Generated new APP_KEY."
+else
+    log "APP_KEY is already set."
 fi
 
-echo "=== Optimizing Application ==="
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
+log "=== Optimizing Application ==="
+# We use || true here so that even if caching fails, the server still attempts to start
+php artisan config:cache || log "Warning: config:cache failed"
+php artisan route:cache || log "Warning: route:cache failed"
+php artisan view:cache || log "Warning: view:cache failed"
 
-echo "=== Running migrations ==="
+log "=== Running migrations ==="
+# migrations are critical, so we don't use || true here
 php artisan migrate --force --no-interaction
+log "Migrations completed."
 
-echo "=== Creating storage link ==="
-php artisan storage:link --force 2>/dev/null || true
+log "=== Creating storage link ==="
+php artisan storage:link --force 2>/dev/null || log "Storage link already exists or failed (non-critical)"
 
-echo "=== Starting PHP Server on port ${PORT:-8080} ==="
-# Use the built-in server for simplicity in this environment
+log "=== Starting PHP Server on port ${PORT:-8080} ==="
+# Start the server and capture output
 php -d upload_max_filesize=10M -d post_max_size=12M -S 0.0.0.0:${PORT:-8080} -t public
